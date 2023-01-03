@@ -3,10 +3,12 @@ package tests;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Platform;
 import utils.GridParallelTestBase;
+import utils.RegressionTests;
 
 @RunWith(Parallelized.class)
 public class GridParallelTest extends GridParallelTestBase {
@@ -36,5 +38,4 @@ public class GridParallelTest extends GridParallelTestBase {
     public void tearDown() throws Exception {
         driver.quit();
     }
-
 }
