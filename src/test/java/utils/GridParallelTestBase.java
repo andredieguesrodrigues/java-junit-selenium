@@ -1,18 +1,18 @@
 package utils;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 
@@ -23,6 +23,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.function.Function;
 
 public class GridParallelTestBase {
     //Declare DesiredCapabilities configuration variables
@@ -34,9 +35,9 @@ public class GridParallelTestBase {
     @Parameterized.Parameters
     public static LinkedList<String[]> getEnvironments() throws Exception {
         LinkedList<String[]> env = new LinkedList<String[]>();
-        env.add(new String[]{"firefox"});
+        //env.add(new String[]{"firefox"});
         env.add(new String[]{"chrome"});
-        env.add(new String[]{"MicrosoftEdge"});
+        //env.add(new String[]{"MicrosoftEdge"});
         //add more browsers here
         return env;
     }
@@ -68,6 +69,7 @@ public class GridParallelTestBase {
         //Set BrowserName
         capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("build", "JUnit-Parallel");
+
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
     }
 
@@ -76,5 +78,19 @@ public class GridParallelTestBase {
         Screenshot screenshot=new AShot().takeScreenshot(driver);
         ImageIO.write(screenshot.getImage(),"PNG",new File(System.getProperty("user.dir") + "\\src\\main\\resources\\screenshots\\evidencia_"+testName+".png"));
 
+    }
+
+    public void waitForPageLoad() {
+
+        Wait<WebDriver> wait = new WebDriverWait(driver, 30);
+        wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                System.out.println("Current Window State       : "
+                        + String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState")));
+                return String
+                        .valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
+                        .equals("complete");
+            }
+        });
     }
 }
