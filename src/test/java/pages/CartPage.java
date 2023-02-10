@@ -28,20 +28,8 @@ public class CartPage extends BasePage {
         click(btnCheckout);
     }
 
-    public void getProductName(){
-        readText(lblProductName);
-    }
-
-    public void getPriceName(){
-        readText(lblProductPrice);
-    }
-
     public void verifyProductName(String expectedText) {
-        Assert.assertEquals(readText(lblProductName).trim(), expectedText);
-    }
-
-    public void verifyProductPrice(String expectedText) {
-        Assert.assertEquals(readText(lblProductPrice).trim(), expectedText);
+        Assert.assertEquals(expectedText, readText(lblProductName).trim());
     }
 
 }

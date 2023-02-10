@@ -35,9 +35,4 @@ public class InventoryPage extends BasePage {
     public String getProductName(){
         return readText(lblProductName);
     }
-
-    public String getPriceName(){
-        return readText(lblProductPrice);
-    }
-
 }

@@ -21,23 +21,12 @@ public class CheckoutStepTwoPage extends BasePage {
     @FindBy(how = How.CLASS_NAME, using = "inventory_item_price")
     public WebElement lblProductPrice;
 
-    public void getProductName(){
-        readText(lblProductName);
-    }
-
-    public void getPriceName(){
-        readText(lblProductPrice);
-    }
-
     public void finishCheckout(){
         click(btnFirstName);
     }
 
     public void verifyProductName(String expectedText) {
-        Assert.assertEquals(readText(lblProductName).trim(), expectedText);
+        Assert.assertEquals(expectedText, readText(lblProductName).trim());
     }
 
-    public void verifyProductPrice(String expectedText) {
-        Assert.assertEquals(readText(lblProductPrice).trim(), expectedText);
-    }
 }

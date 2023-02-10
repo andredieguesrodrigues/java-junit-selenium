@@ -22,15 +22,15 @@ public class CheckoutCompletePage extends BasePage {
     public WebElement btnBackHome;
 
     public void verifyCheckoutMessage(String expectedText) {
-        Assert.assertEquals(readText(lblCheckoutComplete).trim(), expectedText);
+        Assert.assertEquals(expectedText, readText(lblCheckoutComplete).trim());
     }
 
     public void verifyThanksMessage(String expectedText) {
-        Assert.assertEquals(readText(lblThankYou).trim(), expectedText);
+        Assert.assertEquals(expectedText, readText(lblThankYou).trim());
     }
 
     public void verifyButtonBackHome(String expectedText) {
-        Assert.assertEquals(readText(btnBackHome).trim(), expectedText);
+        Assert.assertEquals(expectedText, readText(btnBackHome).trim());
     }
 
 }

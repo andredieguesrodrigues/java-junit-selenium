@@ -70,7 +70,15 @@ public class BuyFlowProductTest extends BaseTest {
 
     @Test
     public void checkoutProductWithLockedOutUserReturnsError() throws Exception {
-        //tbd
+        // Arrange
+        driver.get(SAUCE_DEMO_URL);
+
+        // Act
+        page.GetInstance(LoginPage.class).loginSwagLabs("locked_out_user","secret_sauce");
+        takeScreenShot(driver, testName.getMethodName());
+
+        // Assert
+        page.GetInstance(LoginPage.class).verifyErrorMessage("Epic sadface: Sorry, this user has been locked out.");
     }
 
     @Test
