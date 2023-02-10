@@ -1,12 +1,18 @@
 package utils;
 
+import java.io.IOException;
+import java.util.Properties;
+
+import static utils.Support.loadConfig;
+
 public class myLabs {
 
+    public static void main(String args[]) throws IOException {
 
-    public static void main(String args[]) {
+        Properties prop = loadConfig();
+        String url = prop.getProperty("base_url");
 
-        String current = System.getProperty("user.dir");
-        System.out.println("Current working directory in Java : " + current);
+        System.out.println("Current working directory in Java : " + url);
     }
 
 }

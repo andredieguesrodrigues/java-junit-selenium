@@ -9,12 +9,10 @@ public class Support {
     public static Properties loadConfig() throws IOException {
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream(
-                System.getProperty("user.dir") + "\\src\\main\\resources\\config.properties");
+                System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
 
         prop.load(fis);
         return prop;
     }
-
-
 
 }
