@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BasePage extends PageGenerator{
 
     public BasePage(WebDriver driver) {
@@ -26,6 +29,25 @@ public class BasePage extends PageGenerator{
     public String readText(WebElement wl) {
         wait.until(ExpectedConditions.visibilityOf(wl));
         return wl.getText();
+    }
+
+    public ArrayList iterateElements(List<WebElement> lstElements, String attr){
+        ArrayList<String> arrayItems = new ArrayList<>();
+
+        if(attr.equalsIgnoreCase("text")) {
+            for (int count = 0; count < lstElements.size(); count++) {
+                arrayItems.add(lstElements.get(count).getText());
+                System.out.println(lstElements.get(count).getText());
+            }
+        }
+
+        if(attr.equalsIgnoreCase("src")) {
+            for (int count = 0; count < lstElements.size(); count++) {
+                arrayItems.add(lstElements.get(count).getAttribute(attr));
+                System.out.println(lstElements.get(count).getAttribute(attr));
+            }
+        }
+        return arrayItems;
     }
 
 }

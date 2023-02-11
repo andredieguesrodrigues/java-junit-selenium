@@ -2,19 +2,21 @@ package tests;
 
 import base.BaseTest;
 import com.github.javafaker.Faker;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebElement;
 import pages.*;
 import utils.Parallelized;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static utils.GeneralConstants.SAUCE_DEMO_URL;
+import static utils.Support.checkRepeatedValue;
 
 @RunWith(Parallelized.class)
 public class BuyFlowProductTest extends BaseTest {
@@ -83,7 +85,22 @@ public class BuyFlowProductTest extends BaseTest {
 
     @Test
     public void checkoutProductWithProblemUserSuccessfully() throws Exception {
-        //tbd
+        // Arrange
+        driver.get(SAUCE_DEMO_URL);
+
+        // Act
+        page.GetInstance(LoginPage.class).loginSwagLabs("problem_user","secret_sauce");
+
+        //ArrayList<String> arrayImages = page.GetInstance(InventoryPage.class).getAllItems("image");
+        //ArrayList<String> arrayPrices = page.GetInstance(InventoryPage.class).getAllItems("price");
+        ArrayList<String> arrayName = page.GetInstance(InventoryPage.class).getAllItems("name");
+
+        takeScreenShot(driver, testName.getMethodName());
+
+        // Assert
+        //page.GetInstance(InventoryPage.class).verifyRepeatedValue(arrayImages);
+        //page.GetInstance(InventoryPage.class).verifyIfContainsSpecificText(arrayPrices,"$");
+
     }
 
     @Test

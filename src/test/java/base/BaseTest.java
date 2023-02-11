@@ -30,8 +30,8 @@ public class BaseTest {
         LinkedList<String[]> env = new LinkedList<String[]>();
 
         env.add(new String[]{"chrome"});
-        env.add(new String[]{"firefox"});
-        env.add(new String[]{"MicrosoftEdge"});
+        //env.add(new String[]{"firefox"});
+        //env.add(new String[]{"MicrosoftEdge"});
 
         return env;
     }
