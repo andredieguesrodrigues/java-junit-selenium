@@ -78,11 +78,11 @@ public class InventoryPage extends BasePage {
         return iterateElements(lblPropertyItems, attribute);
     }
 
-    public void verifyIfContainsSpecificText(ArrayList<String> arrayItems, String character) {
+    public void verifyIfContainsSpecificText(ArrayList<String> arrayItems, String text) {
         boolean itemWithText = true;
 
         for (int count = 0; count < arrayItems.size(); count++) {
-            if (!arrayItems.get(count).contains(character)) {
+            if (!arrayItems.get(count).contains(text)) {
                 itemWithText = false;
             }
         }
@@ -90,8 +90,20 @@ public class InventoryPage extends BasePage {
         Assert.assertTrue(itemWithText);
     }
 
-    public void verifyRepeatedValue(ArrayList<String> arrayItems) {
-        Assert.assertTrue(checkRepeatedValue(arrayItems));
+    public void verifyIfNotContainsSpecificText(ArrayList<String> arrayItems, String text) {
+        boolean itemWithText = true;
+
+        for (int count = 0; count < arrayItems.size(); count++) {
+            if (arrayItems.get(count).contains(text)) {
+                itemWithText = false;
+            }
+        }
+
+        Assert.assertTrue(itemWithText);
+    }
+
+    public void verifyNotRepeatedValue(ArrayList<String> arrayItems) {
+        Assert.assertFalse(checkRepeatedValue(arrayItems));
     }
 
 }

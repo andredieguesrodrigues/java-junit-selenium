@@ -37,14 +37,12 @@ public class BasePage extends PageGenerator{
         if(attr.equalsIgnoreCase("text")) {
             for (int count = 0; count < lstElements.size(); count++) {
                 arrayItems.add(lstElements.get(count).getText());
-                System.out.println(lstElements.get(count).getText());
             }
         }
 
         if(attr.equalsIgnoreCase("src")) {
             for (int count = 0; count < lstElements.size(); count++) {
                 arrayItems.add(lstElements.get(count).getAttribute(attr));
-                System.out.println(lstElements.get(count).getAttribute(attr));
             }
         }
         return arrayItems;
