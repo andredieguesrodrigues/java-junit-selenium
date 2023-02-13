@@ -21,19 +21,20 @@ import java.util.LinkedList;
 public class BaseTest {
 
     protected String browserName;
+    protected String loginUser;
     protected Platform platformName;
     protected WebDriver driver;
     protected PageGenerator page;
 
     @Parameterized.Parameters
-    public static LinkedList<String[]> getEnvironments() throws Exception {
-        LinkedList<String[]> env = new LinkedList<String[]>();
+    public static LinkedList<String[]> getBrowsers() throws Exception {
+        LinkedList<String[]> browser = new LinkedList<String[]>();
 
-        env.add(new String[]{"chrome"});
-        //env.add(new String[]{"firefox"});
-        //env.add(new String[]{"MicrosoftEdge"});
+        browser.add(new String[]{"chrome"});
+        browser.add(new String[]{"firefox"});
+        browser.add(new String[]{"MicrosoftEdge"});
 
-        return env;
+        return browser;
     }
 
     public BaseTest(String browserName) throws IOException {

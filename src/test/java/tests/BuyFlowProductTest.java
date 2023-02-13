@@ -109,6 +109,7 @@ public class BuyFlowProductTest extends BaseTest {
 
     @Test
     public void checkoutProductWithPerformanceGlitchUserSuccessfully() throws Exception {
+
         // Arrange
         driver.get(SAUCE_DEMO_URL);
 
