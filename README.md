@@ -20,7 +20,7 @@ However, to run the project it is only necessary to install Make and Docker.
 
 ### How to Run
 
-The automated tests are performed using Junit and Selenium Grid to run in a parallel way and with all declared browsers. So, for that is just necessary to deploy selenium grid (http://localhost:4444/ui) to make available all these browsers in specific nodes. In addition, this docker-compose file will build the app based on the maven project and will run all tests.
+The automated tests are performed using Junit and Selenium Grid to run in a parallel and parameterized way and with all declared browsers. So, for that is just necessary to deploy selenium grid (http://localhost:4444/ui) to make available all these browsers in specific nodes. In addition, this docker-compose file will build the app based on the maven project and will run all tests.
 
 To execute the docker-compose commands, just type:
 

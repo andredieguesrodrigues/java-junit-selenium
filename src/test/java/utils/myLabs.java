@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class myLabs {
+
+    //Class only for validations
     public static void main(String[] args) {
+
         System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/src/test/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         //implicit wait

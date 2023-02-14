@@ -1,7 +1,6 @@
 package base;
 
 import org.junit.Before;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,29 +15,28 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
 
 public class BaseTest {
 
     protected String browserName;
-    protected String loginUser;
+    protected String login;
+    protected String pwd;
+    protected String msg;
     protected Platform platformName;
     protected WebDriver driver;
     protected PageGenerator page;
 
-    @Parameterized.Parameters
-    public static LinkedList<String[]> getBrowsers() throws Exception {
-        LinkedList<String[]> browser = new LinkedList<String[]>();
-
-        browser.add(new String[]{"chrome"});
-        browser.add(new String[]{"firefox"});
-        browser.add(new String[]{"MicrosoftEdge"});
-
-        return browser;
+    public BaseTest(String browserName, String login, String pwd) throws IOException {
+        this.browserName = browserName;
+        this.login = login;
+        this.pwd = pwd;
     }
 
-    public BaseTest(String browserName) throws IOException {
+    public BaseTest(String browserName, String login, String pwd, String msg) throws IOException {
         this.browserName = browserName;
+        this.login = login;
+        this.pwd = pwd;
+        this.msg = msg;
     }
 
     public void setPlatform (Platform platform) {
@@ -47,6 +45,7 @@ public class BaseTest {
 
     @Before
     public void setUp() throws Exception {
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (browserName.equals("firefox")) {
